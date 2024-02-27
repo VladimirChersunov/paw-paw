@@ -3,7 +3,9 @@ import { combineSlices, configureStore } from "@reduxjs/toolkit";
 
 //`combineSlices` автоматически объединяет редьюсеры, используя их 
 //`reducerPath`, поэтому нам уже не нужно вызывать `combineReducers`.
-const rootReducer = combineSlices();
+const rootReducer = combineSlices(
+  
+);
 // Выведите тип `RootState` из корневого редьюсера.
 export type RootState = ReturnType<typeof rootReducer>;
 
