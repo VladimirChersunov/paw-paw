@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { montserrat } from "./ui/fonts";
 import "./ui/globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Paw Pals redux",
@@ -16,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${montserrat.className} antialiased bg-primary`}>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <header></header>
         {children}

@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fill: {
+        "colorsvg": "var(--color-fill-svg)",
+      },
       textColor: {
         "placeholder-color": "var(--color-text-base)",
       },

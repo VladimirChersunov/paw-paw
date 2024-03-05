@@ -6,15 +6,17 @@
   --color-background-base: 201, 255, 255, 1;
   --color-text-base: 0, 216, 216, 1;
   --color-border-base: 0, 216, 216, 1;
+
+  --color-fill-svg: 0, 216, 216, 1;
+  --color-stroke-svg: 0, 130, 130, 1;
 }
 
 
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-text-base: 0, 130, 130, 1;
-    --color-border-base: 0, 0, 0, 1;
-
+    --color-text-base: rgba(0, 130, 130, 1);
+    --color-border-base: rgba(0, 0, 0, 1);
   }
 }
 
