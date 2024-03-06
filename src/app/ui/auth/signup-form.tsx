@@ -1,4 +1,5 @@
 'use client';
+import SocialIcon from "@/app/components/social-icon/social-icon";
 import Link from "next/link";
 
 export default function SignUpForm() {
@@ -41,7 +42,7 @@ export default function SignUpForm() {
         Sign up
       </button>
       <p>Log in with:</p>
-
+      <SocialIcon/>
       <p className="text-center text-[24px] mt-[30px]">
         Have an account?
         <span

@@ -1,7 +1,7 @@
 export default function IconFacebook() {
   return (
     <svg
-      className="w-[32px] fill-current transition-transform transform duration-300 hover:scale-110 cursor-pointer"
+      className="w-[48px] h-[48px] fill-current transition-transform transform duration-300 hover:scale-110 cursor-pointer"
       enableBackground="new 0 0 512 512"
       id="Layer_1"
       version="1.1"

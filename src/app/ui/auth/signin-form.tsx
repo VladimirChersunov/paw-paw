@@ -2,6 +2,8 @@
 import Link from "next/link";
 import IconGoogle from "../icons/iconsGoogle";
 import IconFacebook from "../icons/iconsFacebook";
+import IconApple from "../icons/iconsApple";
+import SocialIcon from "@/app/components/social-icon/social-icon";
 
 
 export default function SignInForm() {
@@ -30,14 +32,11 @@ export default function SignInForm() {
         />
         <span className="hidden w-full text-[12px] text-red-600  my-[-15px] px-5">Error</span>
       </div>
-
-      <IconGoogle />
-      <IconFacebook/>
       <button className=" w-[200px] border-[2px] rounded-[12px] p-3 mt-2 bg-[#00D8D8] text-[#FAFAFA] text-[16px] hover:opacity-40">
         Sign in
       </button>
       <p>Log in with:</p>
-
+      <SocialIcon/>
       <p className="text-center text-[24px] mt-[30px]">
         Don`t have an account?
         <span
