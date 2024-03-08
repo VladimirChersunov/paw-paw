@@ -13,8 +13,8 @@ interface Props {
 export const StoreProvider = ({ children }: Props) => {
   const storeRef = useRef<AppStore | null>(null);
 
-  if (!storeRef.current) {
-    //Создаем экземпляр хранилища при первом рендеринге
+   //Создаем экземпляр хранилища при первом рендеринге
+  if (!storeRef.current) {   
     storeRef.current = makeStore();
   }
 
