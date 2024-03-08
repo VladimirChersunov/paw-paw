@@ -57,7 +57,7 @@ export default function SignUpForm() {
           placeholder="Repeat password"
           required
         />
-        <span className="hidden w-full text-[12px] text-red-600  my-[-15px] px-5">Error</span>
+        <span className="hidden w-full text-skin-error text-[12px]  my-[-15px] px-5">Error</span>
       </div>
       <button className=" w-[200px] border-[2px] rounded-[12px] p-3 bg-[#00D8D8] text-[#FAFAFA] text-[16px] hover:opacity-40">
         Sign up

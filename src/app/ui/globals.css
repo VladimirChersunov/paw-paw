@@ -3,20 +3,39 @@
 @tailwind utilities;
 
 :root {
-  --foreground-hex: #080808;
-  --background-hex:#eef1f1 ;
+  --color-text-base: #FFFFC9;
+  --color-text-muted: #383453;
+  --color-text-inverted: #c6bdff;
+  --color-text-error: #dc2626;
+
+  --color-stroke-base: #0c0221;
+  --color-stroke-inverted: #c6bdff;
+
+  --color-fill: #00d8d8;
+  --color-fill-message: #FFFFFF;
+  --color-fill-inverted: #0c0221;
+
+  --color-button-accent: #0c0221;
+  --color-button-inverted: #c6bdff;
+  --color-button-accent-hover: #584ca3;
+  --color-button-muted: #555555;
+  --color-button-inverted-hover: #7e5efc;
+
+  --color-border-base: #0c0221;
+  --color-border-inverted: #c6bdff;
+  --color-border-error: #dc2626;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-hex: #f4f7f8;
-    --background-hex:#0c0d0e ;
+    --color-text-base: #f4f7f8;
+    --color-fill: #00d8d8;
   }
 }
 
 body {
-  color: var(--foreground-hex);
-  background:  var(--background-hex);
+  color: var(--color-text-base);
+  background:  var( --color-fill);
 }
 
 @layer utilities {
