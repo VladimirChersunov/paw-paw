@@ -15,7 +15,7 @@ export default function SignUpForm() {
           placeholder="Username"
           required
         />
-        <span className="hidden w-full text-[12px] text-red-600  my-[-15px] px-5">Error</span>
+        <span className="hidden w-full text-[12px] text-skin-error  my-[-15px] px-5">Error</span>
       </div>
       <div className="w-full border-[2px] rounded-[10px] border-border-secondary dark:border-border-secondary">
         <input
@@ -25,7 +25,7 @@ export default function SignUpForm() {
           name="birthday"
           placeholder="dd/mm/yyyy..."
         />
-        <span className="hidden w-full text-[12px] text-red-600  my-[-15px] px-5">Error</span>
+        <span className="hidden w-full text-[12px] text-skin-error  my-[-15px] px-5">Error</span>
       </div>
       <div className="w-full border-[2px] rounded-[10px] border-border-secondary dark:border-border-secondary">
         <input
@@ -35,7 +35,7 @@ export default function SignUpForm() {
           name="email"
           placeholder="Email"
         />
-        <span className="hidden w-full text-[12px] text-red-600  my-[-15px] px-5">Error</span>
+        <span className="hidden w-full text-[12px] text-skin-error  my-[-15px] px-5">Error</span>
       </div>
       <div className="w-full border-[2px] rounded-[10px] border-border-secondary dark:border-border-secondary">
         <input
@@ -46,7 +46,7 @@ export default function SignUpForm() {
           placeholder="Password"
           required
         />
-        <span className="hidden w-full text-[12px] text-red-600  my-[-15px] px-5">Error</span>
+        <span className="hidden w-full text-[12px] text-skin-error  my-[-15px] px-5">Error</span>
       </div>
       <div className="w-full border-[2px] rounded-[10px] border-border-secondary dark:border-border-secondary">
         <input

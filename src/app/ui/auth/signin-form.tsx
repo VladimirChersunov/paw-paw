@@ -19,7 +19,7 @@ export default function SignInForm() {
           placeholder="Username"
           required
         />
-        <span className="hidden w-full text-[12px] text-red-600  my-[-15px] px-5">Error</span>
+        <span className="hidden w-full text-[12px] text-skin-error  my-[-15px] px-5">Error</span>
       </div>
       <div className="w-full border-[2px] rounded-[10px] border-border-secondary dark:border-border-secondary">
         <input
@@ -30,9 +30,9 @@ export default function SignInForm() {
           placeholder="Password"
           required
         />
-        <span className="hidden w-full text-[12px] text-red-600  my-[-15px] px-5">Error</span>
+        <span className="hidden w-full text-[12px] text-skin-error  my-[-15px] px-5">Error</span>
       </div>
-      <button className=" w-[200px] border-[2px] rounded-[12px] p-3 mt-2 bg-[#00D8D8] text-[#FAFAFA] text-[16px] hover:opacity-40">
+      <button className=" w-[200px] border-[2px] rounded-[12px] p-3 mt-2 bg-skin-button-accent text-skin-inverted text-[16px] hover:opacity-40">
         Sign in
       </button>
       <p>Log in with:</p>

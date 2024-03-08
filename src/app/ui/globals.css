@@ -28,8 +28,27 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-text-base: #f4f7f8;
-    --color-fill: #00d8d8;
+    --color-text-base: #FFFFC9;
+  --color-text-muted: #383453;
+  --color-text-inverted: #057979;
+  --color-text-error: #dc2626;
+
+  --color-stroke-base: #0c0221;
+  --color-stroke-inverted: #c6bdff;
+
+  --color-fill: #057979;
+  --color-fill-message: #FFFFFF;
+  --color-fill-inverted: #0c0221;
+
+  --color-button-accent: #FFFFC9;
+  --color-button-inverted: #c6bdff;
+  --color-button-accent-hover: #584ca3;
+  --color-button-muted: #555555;
+  --color-button-inverted-hover: #7e5efc;
+
+  --color-border-base: #0c0221;
+  --color-border-inverted: #c6bdff;
+  --color-border-error: #dc2626;
   }
 }
 
