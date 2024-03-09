@@ -31,7 +31,8 @@ const config: Config = {
           base: "var(--color-text-base)",
           muted: "var(--color-text-muted)",
           inverted: "var(--color-text-inverted)",
-          error: "var(--color-text-error)"
+          error: "var(--color-text-error)",
+          link: "var(--color-text-link)"
         },
       },
       backgroundColor: {
@@ -49,15 +50,15 @@ const config: Config = {
       },
       borderColor: {
         skin: {
-          "border-base": "var(--color-border-base)",
-          "border-inverted": "var(--color-border-inverted)",
-          "border-error": "var(--color-border-error)",
+          "base": "var(--color-border-base)",
+          "inverted": "var(--color-border-inverted)",
+          "error": "var(--color-border-error)",
         },
       },
       stroke:{
         skin:{
-          "stroke-base":"var( --color-stroke-base)",
-          "stroke-inverted":"var( --color-stroke-inverted)"
+          "base":"var( --color-stroke-base)",
+          "inverted":"var( --color-stroke-inverted)"
         },
       },
       
