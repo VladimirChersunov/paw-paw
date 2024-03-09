@@ -1,4 +1,4 @@
-import UniversalForm from '../ui/auth/universalForm';
+import UniversalForm from '../ui/universalForm';
 import AuthLogo from '../ui/auth/logo';
 import { InputProps } from '../lib/definitions';
 import SocialIcon from '../ui/auth/social-icon';
@@ -52,7 +52,7 @@ export default function SignUpPage() {
     <main className="flex flex-col bg-fill-background-paw-pals items-center justify-center h-screen">
       <AuthLogo />
       <h1 className="font-semibold text-center text-[40px] leading-[150%] text-ski">Sign up</h1>
-      <UniversalForm inputs = { inputs }/>
+      <UniversalForm inputs={inputs} />
       <p>Log in with:</p>
       <SocialIcon />
       <p className="text-center text-[24px]">

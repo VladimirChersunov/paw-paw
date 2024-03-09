@@ -1,4 +1,4 @@
-import UniversalForm from '../ui/auth/universalForm';
+import UniversalForm from '../ui/universalForm';
 import AuthLogo from '../ui/auth/logo';
 import { InputProps } from '../lib/definitions';
 import SocialIcon from '../ui/auth/social-icon';
