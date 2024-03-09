@@ -1,21 +1,19 @@
 "use client";
 import Input from "../components/utils/input";
 import { InputProps } from '../../lib/definitions';
-interface MyFormProps {
-  inputs: InputProps[];
-}
-const UniversalForm: React.FC<InputProps> = ( props ) => {
+
+const UniversalForm: React.FC<{ inputs: InputProps[] }> = ({ inputs }) => {
+
   return (
       <form
         className="flex flex-col item-center gap-2">
         <h1 className="text-center text-xl uppercase pb-3">Sign Up</h1>
-        {/* {inputs.map((inputProps, index) => (
+      {inputs.map((item, index) => (
           <Input
             key={index}
-            {...inputProps}
+            {...item}
           />
-        ))} */}
-      <Input {...props}/>
+        ))}
         <button
           type="submit"
           className="bg-white/20 p-3 mt-2 rounded-md hover:bg-white/40 text-xs">

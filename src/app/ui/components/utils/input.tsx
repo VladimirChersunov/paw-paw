@@ -1,11 +1,7 @@
 import { InputProps } from "@/app/lib/definitions";
-// interface InputPropsItem {
-//   props: InputProps
-// }
 
-const Input = (inputProps: InputProps) => {
-  console.log(inputProps)
-  const { type, label, value, name, placeholder, error, disabled, onChange } = inputProps;
+const Input = (item: InputProps) => {
+  const { type, label, value, name, placeholder, error, disabled, onChange } = item;
   return (
     <div>
       <div className="w-full border-[2px] rounded-[10px] border-skin-base dark:border-skin-base">

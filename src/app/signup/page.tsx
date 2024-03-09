@@ -48,21 +48,11 @@ export default function SignUpPage() {
     },
   ];
 
-  const props: InputProps = {
-    type: "text",
-    label: "Username",
-    value: "",
-    name: "username",
-    placeholder: "Username...",
-    error: true,
-    disabled: true,
-    onChange: undefined
-  }
   return (
     <main className="flex flex-col bg-fill-background-paw-pals items-center justify-center h-screen">
       <AuthLogo />
       <h1 className="font-semibold text-center text-[40px] leading-[150%] text-ski">Sign up</h1>
-      <UniversalForm {...props}/>
+      <UniversalForm inputs = { inputs }/>
       <p>Log in with:</p>
       <SocialIcon />
       <p className="text-center text-[24px]">
