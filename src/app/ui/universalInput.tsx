@@ -7,7 +7,7 @@ import { InputProps } from "@/app/lib/definitions";
 const Input = (item: InputProps) => {
   const { type, label, value, name, placeholder, error, disabled, onChange} = item;
 
-  //console.log(typeof(onChange))
+  //console.log(value)
 
 
   return (

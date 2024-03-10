@@ -5,19 +5,37 @@ import {FormEvent} from 'react';
 import useInput from "../lib/hooks/inputHook";
 
 const UniversalForm: React.FC<{ inputs: InputProps[] }> = ({ inputs }) => {
-  const emailInput = useInput('')
-  const passwordInput = useInput('')
-  const usernameInput = useInput('')
-  const confirmPasswordInput = useInput('')
-  const universalInput = useInput('')  
+  
+ // Создаем массив экземпляров useInput для каждого input
+ const inputFields = inputs.map(input => useInput(input.value || ''));
+
+  
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
-    validateInput(emailInput)
-    validateInput(passwordInput)
-    validateInput(usernameInput)
-    validateInput(confirmPasswordInput)
-    console.log('email ==>', emailInput.value, 'password ==>', passwordInput.value)
+
+    // Проходимся по всем полям ввода и валидируем их
+    inputFields.forEach(validateInput);
+
+    // Создаем новый FormData объект из текущей формы
+  const formData = new FormData(e.currentTarget as HTMLFormElement);
+
+
+
+  console.log(formData.getAll)
+
+    
+     
+  
+  // Используем formData.get('name') для получения значения каждого поля по имени
+  const username = formData.get('username');
+  const password = formData.get('password');
+
+  
+  
+  // Теперь у вас есть доступ к значениям полей
+  console.log('Username:', username, 'Password:', password);
+    
   }
 
   const validateInput = (input: { value: string, setError: (value: boolean) => void }) => {
@@ -33,11 +51,13 @@ const UniversalForm: React.FC<{ inputs: InputProps[] }> = ({ inputs }) => {
     onSubmit={handleSubmit}
       className="flex flex-col item-center gap-2">
       <h1 className="text-center text-xl uppercase pb-3">Sign Up</h1>
-      {inputs.map((item, index) => (
+      {inputFields.map((input, index) => (
         <Input
           key={index}
-          {...item}
-          {...universalInput}
+          {...inputs[index]}
+           value={input.value}
+          error={input.error}
+          onChange={input.onChange}
         />
       ))}
       <button

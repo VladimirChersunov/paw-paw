@@ -6,6 +6,7 @@ const useInput = (initialValue: string) => {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value)
+    setError(!e.target.value.trim());
   }
 
   return {

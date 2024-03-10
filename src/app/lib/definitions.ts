@@ -13,7 +13,7 @@ export type User = {
 export interface InputProps {
   type: 'text' | 'number' | 'email' | 'password'
   label: string
-  value: string | number
+  value: string 
   name: string
   placeholder: string
   error: boolean

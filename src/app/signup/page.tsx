@@ -5,6 +5,9 @@ import SocialIcon from '../ui/auth/social-icon';
 import Link from 'next/link';
 
 export default function SignUpPage() {
+
+
+  
   const inputs: InputProps[] = [
     {
       type: "text",
