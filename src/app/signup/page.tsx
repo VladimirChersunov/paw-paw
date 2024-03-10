@@ -1,10 +1,28 @@
+"use client"
 import UniversalForm from '../ui/universalForm';
 import AuthLogo from '../ui/auth/logo';
 import { InputProps } from '../lib/definitions';
 import SocialIcon from '../ui/auth/social-icon';
 import Link from 'next/link';
+import IconEye from '../ui/icons/iconsEye';
+import IconEyeOff from '../ui/icons/iconsEyeOff';
+import { useState } from 'react';
 
 export default function SignUpPage() {
+
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible(!isPasswordVisible);
+  };
+
+  const [isPasswordConfirmVisible, setIsPasswordConfirmVisible] = useState(false);
+
+  const togglePasswordConfirmVisibility = () => {
+    setIsPasswordConfirmVisible(!isPasswordConfirmVisible);
+  };
+
+
   const inputs: InputProps[] = [
     {
       type: "text",
@@ -12,15 +30,6 @@ export default function SignUpPage() {
       value: "",
       name: "username",
       placeholder: "Username...",
-      error: false,
-      disabled: false,
-    },
-    {
-      type: "date",
-      label: "date",
-      value: "",
-      name: "date",
-      placeholder: "date",
       error: false,
       disabled: false,
     },
@@ -34,22 +43,34 @@ export default function SignUpPage() {
       disabled: false
     },
     {
+      type: "date",
+      label: "date",
+      value: "",
+      name: "date",
+      placeholder: "date",
+      error: false,
+      disabled: false,
+    },
+   
+    {
       label: "Password",
-      type: "password",
+      type: isPasswordVisible ? "text" : "password",
       placeholder: "Password...",
       name: "password",
       value: "",
       error: false,
       disabled: false,
+      icon: isPasswordVisible ? <IconEyeOff onClick={togglePasswordVisibility} /> : <IconEye onClick={togglePasswordVisibility} />
     },
     {
       label: "re-Password",
-      type: "password",
+      type: isPasswordConfirmVisible ? "text" : "password",
       placeholder: "re-Password...",
       name: "rePassword",
       value: "",
       error: false,
       disabled: false,
+      icon: isPasswordConfirmVisible ? <IconEyeOff onClick={togglePasswordConfirmVisibility} /> : <IconEye onClick={togglePasswordConfirmVisibility} />
     },
   ];
 
@@ -69,3 +90,5 @@ export default function SignUpPage() {
     </main>
   );
 }
+
+

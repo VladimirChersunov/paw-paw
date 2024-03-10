@@ -1,7 +1,13 @@
-export default function IconEyeOff() {
+type IconEyeProps = {
+  onClick: React.MouseEventHandler<SVGSVGElement>;
+};
+
+
+const IconEyeOff:React.FC<IconEyeProps> = ({onClick}) => {
   return (
     <svg
-      className="w-[48px] h-[48px] fill-current transition-transform transform duration-300 hover:scale-110 cursor-pointer"
+    onClick={onClick}
+      className="w-7 h-7 fill-current transition-transform transform duration-300 hover:scale-110 cursor-pointer mr-2"
       width="800px"
       height="800px"
       viewBox="0 0 24 24"
@@ -29,3 +35,4 @@ export default function IconEyeOff() {
   )
 
 }
+export default IconEyeOff;

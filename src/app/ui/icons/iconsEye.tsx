@@ -1,7 +1,15 @@
-export default function IconEye() {
+
+type IconEyeProps = {
+  onClick: React.MouseEventHandler<SVGSVGElement>;
+};
+
+const IconEye:React.FC<IconEyeProps> = ({onClick}) => {
+
+
   return (
     <svg
-      className="w-[48px] h-[48px] fill-current transition-transform transform duration-300 hover:scale-110 cursor-pointer"
+    onClick={onClick}
+      className="w-7 h-7 mr-2 fill-current transition-transform transform duration-300 hover:scale-110 cursor-pointer"
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg">
       <path
@@ -18,3 +26,5 @@ export default function IconEye() {
   )
 
 }
+
+export default IconEye;
