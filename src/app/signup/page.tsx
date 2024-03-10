@@ -14,7 +14,7 @@ export default function SignUpPage() {
       placeholder: "Username...",
       error: false,
       disabled: true,
-      onChange: undefined
+      
     },
     {
       label: "Email",
@@ -24,7 +24,7 @@ export default function SignUpPage() {
       value: "",
       error: false,
       disabled: true,
-      onChange: undefined
+      
     },
     {
       label: "Password",
@@ -34,7 +34,7 @@ export default function SignUpPage() {
       value: "",
       error: false,
       disabled: true,
-      onChange: undefined
+      
     },
     {
       label: "re-Password",
@@ -44,7 +44,7 @@ export default function SignUpPage() {
       value: "",
       error: false,
       disabled: true,
-      onChange: undefined
+     
     },
   ];
 

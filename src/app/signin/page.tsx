@@ -14,7 +14,7 @@ export default function SignInPage() {
       placeholder: "Username...",
       error: false,
       disabled: true,
-      onChange: undefined
+      
     },
     {
       label: "Password",
@@ -24,7 +24,7 @@ export default function SignInPage() {
       value: "",
       error: false,
       disabled: true,
-      onChange: undefined
+      
     },
   ];
 

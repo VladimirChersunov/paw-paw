@@ -4,11 +4,16 @@ import { InputProps } from '../lib/definitions';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import useInput from "../lib/hooks/inputHook";
 
+
+
+
 const UniversalForm: React.FC<{ inputs: InputProps[] }> = ({ inputs }) => {
 
   const { value, error, onChange, setError } = useInput("")
-
   const [name, setName] = useState('')
+  const [formInputProps, setFormInputProps] = useState({})
+  
+
   
 
 
@@ -30,6 +35,7 @@ const UniversalForm: React.FC<{ inputs: InputProps[] }> = ({ inputs }) => {
         <Input
           key={index}
           {...item}
+          onChange={onChange}
         />
       ))}
       <button
