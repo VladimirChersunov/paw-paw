@@ -1,15 +1,8 @@
 import { InputProps } from "@/app/lib/definitions";
 
-
-
-
-
 const Input = (item: InputProps) => {
-  const { type, label, value, name, placeholder, error, disabled, onChange} = item;
-
+  const { type, label, value, name, placeholder, error, disabled, onChange } = item;
   //console.log(value)
-
-
   return (
     <div>
       <div className="w-full border-[2px] rounded-[10px] border-skin-base dark:border-skin-base">
@@ -21,8 +14,8 @@ const Input = (item: InputProps) => {
           placeholder={placeholder}
           onChange={onChange}
           value={value}
-          disabled={disabled}     
-          required    
+          disabled={disabled}
+          required
         />
       </div>
       {error && <span className="w-full text-[12px] text-skin-error my-[-15px] px-5">Error</span>}

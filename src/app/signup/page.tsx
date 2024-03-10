@@ -5,9 +5,6 @@ import SocialIcon from '../ui/auth/social-icon';
 import Link from 'next/link';
 
 export default function SignUpPage() {
-
-
-  
   const inputs: InputProps[] = [
     {
       type: "text",
@@ -17,7 +14,15 @@ export default function SignUpPage() {
       placeholder: "Username...",
       error: false,
       disabled: false,
-      
+    },
+    {
+      type: "date",
+      label: "date",
+      value: "",
+      name: "date",
+      placeholder: "date",
+      error: false,
+      disabled: false,
     },
     {
       label: "Email",
@@ -26,8 +31,7 @@ export default function SignUpPage() {
       name: "email",
       value: "",
       error: false,
-      disabled: false,
-      
+      disabled: false
     },
     {
       label: "Password",
@@ -37,7 +41,6 @@ export default function SignUpPage() {
       value: "",
       error: false,
       disabled: false,
-      
     },
     {
       label: "re-Password",
@@ -47,7 +50,6 @@ export default function SignUpPage() {
       value: "",
       error: false,
       disabled: false,
-     
     },
   ];
 
@@ -65,7 +67,6 @@ export default function SignUpPage() {
           <Link href='/signin'>Sign in!</Link>
         </span>
       </p>
-
     </main>
   );
 }

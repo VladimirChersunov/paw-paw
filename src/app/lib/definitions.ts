@@ -11,7 +11,7 @@ export type User = {
 };
 
 export interface InputProps {
-  type: 'text' | 'number' | 'email' | 'password'
+  type: 'text' | 'number' | 'email' | 'password'| 'date'
   label: string
   value: string 
   name: string
