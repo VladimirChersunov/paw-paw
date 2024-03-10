@@ -1,28 +1,30 @@
 "use client";
 import Input from "./universalInput";
 import { InputProps } from '../lib/definitions';
-import { ChangeEvent, FormEvent, useState } from 'react';
+import {FormEvent} from 'react';
 import useInput from "../lib/hooks/inputHook";
 
-
-
-
 const UniversalForm: React.FC<{ inputs: InputProps[] }> = ({ inputs }) => {
+  const emailInput = useInput('')
+  const passwordInput = useInput('')
+  const usernameInput = useInput('')
+  const confirmPasswordInput = useInput('')
+  const universalInput = useInput('')  
 
-  const { value, error, onChange, setError } = useInput("")
-  const [name, setName] = useState('')
-  const [formInputProps, setFormInputProps] = useState({})
-  
-
-  
-
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
-    if (!name.trim()) {
-      setError(true)
+    validateInput(emailInput)
+    validateInput(passwordInput)
+    validateInput(usernameInput)
+    validateInput(confirmPasswordInput)
+    console.log('email ==>', emailInput.value, 'password ==>', passwordInput.value)
+  }
+
+  const validateInput = (input: { value: string, setError: (value: boolean) => void }) => {
+    if (!input.value.trim()) {
+      input.setError(true)
     } else {
-      setError(false)
+      input.setError(false)
     }
   }
 
@@ -35,7 +37,7 @@ const UniversalForm: React.FC<{ inputs: InputProps[] }> = ({ inputs }) => {
         <Input
           key={index}
           {...item}
-          onChange={onChange}
+          {...universalInput}
         />
       ))}
       <button

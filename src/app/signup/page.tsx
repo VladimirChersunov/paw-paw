@@ -13,7 +13,7 @@ export default function SignUpPage() {
       name: "username",
       placeholder: "Username...",
       error: false,
-      disabled: true,
+      disabled: false,
       
     },
     {
@@ -23,7 +23,7 @@ export default function SignUpPage() {
       name: "email",
       value: "",
       error: false,
-      disabled: true,
+      disabled: false,
       
     },
     {
@@ -33,7 +33,7 @@ export default function SignUpPage() {
       name: "password",
       value: "",
       error: false,
-      disabled: true,
+      disabled: false,
       
     },
     {
@@ -43,7 +43,7 @@ export default function SignUpPage() {
       name: "rePassword",
       value: "",
       error: false,
-      disabled: true,
+      disabled: false,
      
     },
   ];

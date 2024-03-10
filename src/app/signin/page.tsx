@@ -13,7 +13,7 @@ export default function SignInPage() {
       name: "username",
       placeholder: "Username...",
       error: false,
-      disabled: true,
+      disabled: false,
       
     },
     {
@@ -23,7 +23,7 @@ export default function SignInPage() {
       name: "password",
       value: "",
       error: false,
-      disabled: true,
+      disabled: false,
       
     },
   ];
