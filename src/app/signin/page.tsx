@@ -31,7 +31,6 @@ export default function SignInPage() {
   return (
     <main className="flex flex-col bg-fill-background-paw-pals items-center justify-center h-screen">
       <AuthLogo />
-      <h1 className="font-semibold text-center text-[40px] leading-[150%] text-ski">Sign in</h1>
       <UniversalForm inputs={inputs} />
       <p>Log in with:</p>
       <SocialIcon />
