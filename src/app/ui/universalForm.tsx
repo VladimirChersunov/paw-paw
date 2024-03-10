@@ -5,6 +5,7 @@ import { FormEvent } from 'react'
 import useInput from '../lib/hooks/inputHook'
 
 const UniversalForm: React.FC<{ inputs: InputProps[] }> = ({ inputs }) => {
+
   // Создаем массив экземпляров useInput для каждого input
   const inputFields = inputs.map(input => useInput(input.value || ''))
 
@@ -15,16 +16,17 @@ const UniversalForm: React.FC<{ inputs: InputProps[] }> = ({ inputs }) => {
     inputFields.forEach(validateInput)
 
     // Создаем новый FormData объект из текущей формы
-    const formData = new FormData(e.currentTarget as HTMLFormElement)
+    const formData = new FormData(e.currentTarget as HTMLFormElement)   
 
     // Используем formData.get('name') для получения значения каждого поля по имени
     const username = formData.get('username')
     const password = formData.get('password')
+    const birthDate = formData.get('date')
     const email = formData.get('email')
     const rePassword = formData.get('rePassword')
 
     // Теперь у вас есть доступ к значениям полей
-    console.log('Username:', username + '\n', "Email: ", email + '\n', 'Password: ', password + '\n', "rePassword: ", rePassword + '\n')
+    console.log('Username:', username+'\n', "Email: ", email+'\n', 'Password: ', password+'\n',  "rePassword: ", rePassword+'\n',   "birthDate: ", birthDate+'\n')
   }
 
   const validateInput = (input: {
@@ -40,6 +42,7 @@ const UniversalForm: React.FC<{ inputs: InputProps[] }> = ({ inputs }) => {
 
   return (
     <form onSubmit={handleSubmit} className='flex flex-col item-center gap-2'>
+      <h1 className='text-center text-xl uppercase pb-3'>Sign Up</h1>
       {inputFields.map((input, index) => (
         <Input
           key={index}
