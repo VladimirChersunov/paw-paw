@@ -1,6 +1,8 @@
 "use client"
+
 import React, { useState } from 'react';
 import Calendar from './calendar';
+import CircularSelector from './circularSelector'; // Импортируем компонент CircularSelector
 
 const DatePicker: React.FC = () => {
   const currentYear = new Date().getFullYear().toString();
@@ -35,44 +37,106 @@ const DatePicker: React.FC = () => {
     { value: '12', name: 'December' },
   ];
 
-  const handleDateClick = (date: number) => {
-    setSelectedDate(date);
+  // Обработчики изменения года и месяца
+  const handleYearChange = (newYear: string) => {
+    setYear(newYear);
+  };
+
+  const handleMonthChange = (newMonth: string) => {
+    setMonth(newMonth);
   };
 
   return (
     <div className="flex flex-col items-center">
       <div className="flex mb-4">
-        <select
-          className="w-[50%] mr-4 px-4 py-2 bg-[#00d8d8] text-center text-white rounded-md focus:outline-none focus:bg-[#C9FFFF] focus:text-[#00d8d8]"
-          value={year}
-          onChange={(e) => setYear(e.target.value)}
-        >
-          {generateYears().map((year) => (
-            <option key={year} value={year} >
-              {year}
-            </option>
-          ))}
-        </select>
-        <select
-          className="w-[50%]px-4 py-2 bg-[#00d8d8] text-center text-white rounded-md focus:outline-none focus:bg-[#C9FFFF] focus:text-[#00d8d8]"
-          value={month}
-          onChange={(e) => setMonth(e.target.value)}
-        >
-          {months.map((month) => (
-            <option key={month.value} value={month.value}>
-              {month.name}
-            </option>
-          ))}
-        </select>
+        {/* Заменяем стандартный select на CircularSelector для выбора года */}
+        <CircularSelector options={generateYears()} onChange={handleYearChange} />
+        {/* Заменяем стандартный select на CircularSelector для выбора месяца */}
+        <CircularSelector options={months.map(month => month.value)} onChange={handleMonthChange} />
       </div>
       <div className="calendar-container">
-        <Calendar month={month} year={year} selectedDate={selectedDate} onDateClick={handleDateClick} />
+        <Calendar month={month} year={year} selectedDate={selectedDate} onDateClick={setSelectedDate} />
       </div>
     </div>
   );
 };
 
 export default DatePicker;
+// "use client"
+// import React, { useState } from 'react';
+// import Calendar from './calendar';
+
+// const DatePicker: React.FC = () => {
+//   const currentYear = new Date().getFullYear().toString();
+//   const currentMonth = (new Date().getMonth() + 1).toString();
+//   const currentDate = new Date().getDate();
+
+//   const [year, setYear] = useState<string>(currentYear);
+//   const [month, setMonth] = useState<string>(currentMonth);
+//   const [selectedDate, setSelectedDate] = useState<number | null>(currentDate);
+
+//   const generateYears = (): string[] => {
+//     const currentYear = new Date().getFullYear();
+//     const years = [];
+//     for (let i = currentYear - 100; i <= currentYear; i++) {
+//       years.push(i.toString());
+//     }
+//     return years;
+//   };
+
+//   const months = [
+//     { value: '01', name: 'January' },
+//     { value: '02', name: 'February' },
+//     { value: '03', name: 'March' },
+//     { value: '04', name: 'April' },
+//     { value: '05', name: 'May' },
+//     { value: '06', name: 'June' },
+//     { value: '07', name: 'July' },
+//     { value: '08', name: 'August' },
+//     { value: '09', name: 'September' },
+//     { value: '10', name: 'October' },
+//     { value: '11', name: 'November' },
+//     { value: '12', name: 'December' },
+//   ];
+
+//   const handleDateClick = (date: number) => {
+//     setSelectedDate(date);
+//   };
+
+//   return (
+//     <div className="flex flex-col items-center">
+//       <div className="flex mb-4">
+//         <select
+//           className="w-[50%] mr-4 px-4 py-2 bg-[#00d8d8] text-center text-white rounded-md focus:outline-none focus:bg-[#C9FFFF] focus:text-[#00d8d8]"
+//           value={year}
+//           onChange={(e) => setYear(e.target.value)}
+//         >
+//           {generateYears().map((year) => (
+//             <option key={year} value={year} >
+//               {year}
+//             </option>
+//           ))}
+//         </select>
+//         <select
+//           className="w-[50%]px-4 py-2 bg-[#00d8d8] text-center text-white rounded-md focus:outline-none focus:bg-[#C9FFFF] focus:text-[#00d8d8]"
+//           value={month}
+//           onChange={(e) => setMonth(e.target.value)}
+//         >
+//           {months.map((month) => (
+//             <option key={month.value} value={month.value}>
+//               {month.name}
+//             </option>
+//           ))}
+//         </select>
+//       </div>
+//       <div className="calendar-container">
+//         <Calendar month={month} year={year} selectedDate={selectedDate} onDateClick={handleDateClick} />
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default DatePicker;
 
 // export default function DatePicker() {
 //   // Генерация списка годов (за сто лет от текущего)

@@ -38,7 +38,7 @@ const Calendar: React.FC<CalendarProps> = ({ month, year, selectedDate, onDateCl
   const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
   return (
-    <div className="shadow-lg rounded-lg overflow-hidden">
+    <div className="shadow-lg rounded-lg overflow-hidden min-w-[320px] min-h-[320px]">
       <div className="py-2 px-4 flex justify-between rounded-[12px] border-[2px] border-[#00d8d8] gap-3">
         {weekDays.map((day, index) => (
           <div key={day} className={`${(index == 5 || index == 6) ? 'text-skin-error' : 'text-skin-base'}`}>

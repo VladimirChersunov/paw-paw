@@ -11,6 +11,7 @@ interface CircularSelectorProps {
 
 const CircularSelector: React.FC<CircularSelectorProps> = ({ options, onChange = () => { } }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleNext = useCallback(() => {
     setSelectedIndex((prevIndex) => (prevIndex === options.length - 1 ? 0 : prevIndex + 1));
@@ -20,28 +21,40 @@ const CircularSelector: React.FC<CircularSelectorProps> = ({ options, onChange =
     setSelectedIndex((prevIndex) => (prevIndex === 0 ? options.length - 1 : prevIndex - 1));
   }, [options.length]);
 
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
   useEffect(() => {
     const handleScroll = (event: WheelEvent) => {
-      if (event.deltaY > 0) {
-        handleNext();
-      } else {
-        handlePrevious();
+      if (isHovered) {
+        if (event.deltaY > 0) {
+          handleNext();
+        } else {
+          handlePrevious();
+        }
       }
     };
 
-    window.addEventListener('wheel', handleScroll);
+    if (isHovered) {
+      window.addEventListener('wheel', handleScroll);
+    }
 
     return () => {
       window.removeEventListener('wheel', handleScroll);
     };
-  }, [handleNext, handlePrevious]);
+  }, [handleNext, handlePrevious, isHovered]);
 
   useEffect(() => {
     onChange(options[selectedIndex]);
   }, [selectedIndex, options, onChange]);
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <div className="flex flex-col justify-center gap-2 items-center w-36 h-40 rounded-lg shadow-lg transition-opacity duration-300">
         <button className="flex justify-center items-center focus:outline-none transform hover:scale-110" onClick={handlePrevious}>
           <IconArrowUp />
