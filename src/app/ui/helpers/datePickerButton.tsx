@@ -28,7 +28,7 @@ export function DatePickerButton () {
           onClick={() => {
             setOpen(visible => !visible)
           }}
-          className='flex flex-row bg-fill-base rounded-lg items-center justify-center border mb-2 border-yellow-300'
+          className='flex select-none flex-row bg-fill-base rounded-lg items-center justify-center border mb-2 border-yellow-300'
         >
           <input
             className='rounded-l-lg outline-none bg-inherit pl-1 '
