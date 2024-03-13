@@ -56,7 +56,7 @@ const Calendar: React.FC<CalendarProps> = ({
           </div>
         ))}
       </div>
-      <div className='grid grid-cols-7 gap-1'>
+      <div className='grid grid-cols-7 gap-1 p-2'>
         {generateCalendar().map((date, index) => (
           <div
             key={index}
