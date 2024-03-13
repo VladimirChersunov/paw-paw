@@ -6,6 +6,7 @@ interface CalendarProps {
 }
 
 const Calendar: React.FC<CalendarProps> = ({ month, year, selectedDate, onDateClick }) => {
+  
   // Функция для получения количества дней в месяце
   const daysInMonth = (month: number, year: number): number => {
     return new Date(year, month, 0).getDate();

@@ -47,7 +47,10 @@ const DatePicker: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center">
+    <div
+    className={`absolute z-50 shadow-2xl shadow-yellow-300  p-10
+    rounded-xl  w-max select-none right-0 `}>
+<div className="flex flex-col items-center">
       <div className="flex mb-4">
         {/* Заменяем стандартный select на CircularSelector для выбора года */}
         <CircularSelector options={generateYears()} onChange={handleYearChange} />
@@ -58,6 +61,8 @@ const DatePicker: React.FC = () => {
         <Calendar month={month} year={year} selectedDate={selectedDate} onDateClick={setSelectedDate} />
       </div>
     </div>
+    </div>
+    
   );
 };
 

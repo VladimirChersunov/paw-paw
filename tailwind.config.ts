@@ -10,21 +10,11 @@ const config: Config = {
     extend: {
       screens: {
       'not-supported': {'min': '0px', 'max': '279px'},
-
       'sm': {'min': '280px', 'max': '1016px'},
-      
-
       'md': {'min': '1016px', 'max': '1320px'},
-     
-
       'lg': {'min': '1059px', 'max': '1279px'},
-     
-
-      'xl': {'min': '1280px', 'max': '1535px'},
-      
-      '2xl': {'min': '1536px'},
-     
-        
+      'xl': {'min': '1280px', 'max': '1535px'},     
+      '2xl': {'min': '1536px'},        
       },
       textColor: {
         skin: {
@@ -44,8 +34,7 @@ const config: Config = {
           "button-accent-hover": "var(--color-button-accent-hover)",
           "button-muted": "var(--color-button-muted)",
           "button-inverted-hover": "var(--color-button-inverted-hover)",
-          "button-inverted": "var( --color-button-inverted)",
-          
+          "button-inverted": "var(--color-button-inverted)",          
         },
       },
       borderColor: {
