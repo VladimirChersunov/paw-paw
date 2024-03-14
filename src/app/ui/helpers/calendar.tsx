@@ -13,6 +13,7 @@ const Calendar: React.FC<CalendarProps> = ({
   selectedIndex,
   onDateClick
 }) => {
+  
   // Функция для получения количества дней в месяце
   const daysInMonth = (month: number, year: number): number => {
     return new Date(year, month, 0).getDate()
@@ -20,8 +21,15 @@ const Calendar: React.FC<CalendarProps> = ({
 
   // Генерация календаря для выбранного месяца и года
   const generateCalendar = (): (number | null)[] => {
+
     const totalDays: number = daysInMonth(selectedIndex, parseInt(year))
+
+console.log({selectedIndex})
+console.log("god")
+console.log(year)
+console.log(totalDays)
     const firstDayOfMonth: number = new Date(`${year}-${month}-01`).getDay()
+
     const calendarDays: (number | null)[] = []
 
     for (let i = 1; i <= totalDays; i++) {

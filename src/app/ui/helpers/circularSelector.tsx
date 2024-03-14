@@ -1,73 +1,104 @@
-"use client"
-
-import React, { useState, useEffect, useCallback } from 'react';
-import IconArrowUp from '../icons/iconsArrowUp';
-import IconArrowDown from '../icons/iconsArrowDown';
+'use client'
+import React, { useState, useEffect, useCallback } from 'react'
+import IconArrowUp from '../icons/iconsArrowUp'
+import IconArrowDown from '../icons/iconsArrowDown'
 
 interface CircularSelectorProps {
-  options: string[];
-  onChange?: (newValue: string) => void;
+  selected: number
+  dataArray: string[]
+  onChange?: (selectedIndex: number) => void
 }
 
-const CircularSelector: React.FC<CircularSelectorProps> = ({ options, onChange = () => { } }) => {
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
+const CircularSelector: React.FC<CircularSelectorProps> = ({
+  selected,
+  dataArray,
+  onChange = () => {}
+}) => {
+  const [selectedIndex, setSelectedIndex] = useState(selected)
+  const [isHovered, setIsHovered] = useState(false)
 
   const handleNext = useCallback(() => {
-    setSelectedIndex((prevIndex) => (prevIndex === options.length - 1 ? 0 : prevIndex + 1));
-  }, [options.length]);
+    setSelectedIndex(prevIndex =>
+      prevIndex === dataArray.length - 1 ? 0 : prevIndex + 1
+    )
+  }, [dataArray.length])
 
   const handlePrevious = useCallback(() => {
-    setSelectedIndex((prevIndex) => (prevIndex === 0 ? options.length - 1 : prevIndex - 1));
-  }, [options.length]);
+    setSelectedIndex(prevIndex =>
+      prevIndex === 0 ? dataArray.length - 1 : prevIndex - 1
+    )
+  }, [dataArray.length])
 
   const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
+    setIsHovered(true)
+  }
 
   const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
+    setIsHovered(false)
+  }
 
   useEffect(() => {
     const handleScroll = (event: WheelEvent) => {
       if (isHovered) {
         if (event.deltaY > 0) {
-          handleNext();
+          handleNext()
         } else {
-          handlePrevious();
+          handlePrevious()
         }
       }
-    };
-
+    }
     if (isHovered) {
-      window.addEventListener('wheel', handleScroll);
+      window.addEventListener('wheel', handleScroll)
     }
 
     return () => {
-      window.removeEventListener('wheel', handleScroll);
-    };
-  }, [handleNext, handlePrevious, isHovered]);
+      window.removeEventListener('wheel', handleScroll)
+    }
+  }, [handleNext, handlePrevious, isHovered])
 
   useEffect(() => {
-    onChange(selectedIndex.toString());
-  }, [selectedIndex, options, onChange]);
+    onChange(selectedIndex)
+  }, [selectedIndex])
 
   return (
-    <div className="flex flex-col justify-center items-center" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-      <div className="flex flex-col justify-center gap-2 items-center w-36 h-40 rounded-lg shadow-lg transition-opacity duration-300">
-        <button className="flex justify-center items-center focus:outline-none transform hover:scale-110" onClick={handlePrevious}>
+    <div
+      className='flex flex-col justify-center items-center'
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div className='flex flex-col justify-center gap-2 items-center w-36 h-40 rounded-lg shadow-lg transition-opacity duration-300'>
+        <button
+          className='flex justify-center items-center focus:outline-none transform hover:scale-110'
+          onClick={handlePrevious}
+        >
           <IconArrowUp />
         </button>
-        <div className="text-center text-lg">{options[(selectedIndex === 0 ? options.length : selectedIndex) - 1]}</div>
-        <div className="text-white bg-[#00d8d8] px-4 rounded-xl">{options[selectedIndex]}</div>
-        <div className="text-center text-lg">{options[(selectedIndex + 1) % options.length]}</div>
-        <button className="focus:outline-none text-2xl transform hover:scale-110" onClick={handleNext}>
+
+        <div className='text-center text-lg'>
+          {
+            dataArray[
+              (selectedIndex === 0 ? dataArray.length : selectedIndex) - 1
+            ]
+          }
+        </div>
+
+        <div className='text-white bg-[#00d8d8] px-4 rounded-xl'>
+          {dataArray[selectedIndex]}
+        </div>
+
+        <div className='text-center text-lg'>
+          {dataArray[(selectedIndex + 1) % dataArray.length]}
+        </div>
+
+        <button
+          className='focus:outline-none text-2xl transform hover:scale-110'
+          onClick={handleNext}
+        >
           <IconArrowDown />
         </button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CircularSelector;
+export default CircularSelector
