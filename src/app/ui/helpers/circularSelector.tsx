@@ -50,7 +50,7 @@ const CircularSelector: React.FC<CircularSelectorProps> = ({ options, onChange =
   }, [handleNext, handlePrevious, isHovered]);
 
   useEffect(() => {
-    onChange(options[selectedIndex]);
+    onChange(selectedIndex.toString());
   }, [selectedIndex, options, onChange]);
 
   return (

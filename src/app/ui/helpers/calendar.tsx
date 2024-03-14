@@ -2,6 +2,7 @@ interface CalendarProps {
   month: string
   year: string
   selectedDate: number | null
+  selectedIndex: number
   onDateClick: (date: number) => void
 }
 
@@ -9,6 +10,7 @@ const Calendar: React.FC<CalendarProps> = ({
   month,
   year,
   selectedDate,
+  selectedIndex,
   onDateClick
 }) => {
   // Функция для получения количества дней в месяце
@@ -18,7 +20,7 @@ const Calendar: React.FC<CalendarProps> = ({
 
   // Генерация календаря для выбранного месяца и года
   const generateCalendar = (): (number | null)[] => {
-    const totalDays: number = daysInMonth(parseInt(month), parseInt(year))
+    const totalDays: number = daysInMonth(selectedIndex, parseInt(year))
     const firstDayOfMonth: number = new Date(`${year}-${month}-01`).getDay()
     const calendarDays: (number | null)[] = []
 
