@@ -57,12 +57,12 @@ const CircularSelector: React.FC<CircularSelectorProps> = ({
     }
   }, [handleNext, handlePrevious, isHovered])
 
-  /////////////////////////////////////////////////////
+  
   useEffect(() => {
   
       onChange(selectedIndex)
     
-  }, [selectedIndex])
+  }, [selectedIndex, onChange])
 
   return (
     <div
@@ -78,7 +78,7 @@ const CircularSelector: React.FC<CircularSelectorProps> = ({
           <IconArrowUp />
         </button>
 
-        <div className='text-center text-lg'>
+        <div className='text-center text-sm'>
           {
             dataArray[
               (selectedIndex === 0 ? dataArray.length : selectedIndex) - 1
@@ -86,11 +86,11 @@ const CircularSelector: React.FC<CircularSelectorProps> = ({
           }
         </div>
 
-        <div className='text-white bg-[#00d8d8] px-4 rounded-xl'>
+        <div className='text-white bg-[#00d8d8] px-4 rounded-xl text-lg'>
           {dataArray[selectedIndex]}
         </div>
 
-        <div className='text-center text-lg'>
+        <div className='text-center text-sm'>
           {dataArray[(selectedIndex + 1) % dataArray.length]}
         </div>
 

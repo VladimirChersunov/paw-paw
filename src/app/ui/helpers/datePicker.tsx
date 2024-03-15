@@ -1,32 +1,16 @@
 'use client'
-import React, { useState } from 'react'
-import Calendar from './calendar'
-import CircularSelector from './circularSelector' // Импортируем компонент CircularSelector
+import { useState, useCallback } from 'react';
+import Calendar from './calendar';
+import CircularSelector from './circularSelector';
+import generateYears from '@/app/lib/helpers/generateYears';
 
 const DatePicker: React.FC = () => {
-  const [year, setYear] = useState<number>(0)
-  const [month, setMonth] = useState<number>(0)
-  const [selectedDate, setSelectedDate] = useState<number>(new Date().getDate())
- 
+  const [year, setYear] = useState<number>(0);
+  const [month, setMonth] = useState<number>(0);
+  const [selectedDate, setSelectedDate] = useState<number>(new Date().getDate());
 
-  if (typeof window === 'undefined') {
-    // Серверный рендеринг 
-     console.log('Серверный рендеринг');
-  } else {
-    // Клиентский рендеринг 
-     console.log('Клиентский рендеринг');
-  }
-
-  //генерация массива годов
-  const generateYears = (): string[] => {
-    const currentYear = new Date().getFullYear()
-    const years = []
-    for (let i = currentYear - 100; i <= currentYear; i++) {
-      years.push(i.toString())
-    }
-    return years
-  }
-  const years = generateYears()
+  //генерация массива годов 
+  const years = generateYears(1925, 2030);
 
   //массив месяцев
   const months = [
@@ -45,19 +29,18 @@ const DatePicker: React.FC = () => {
   ]
 
   const currentYear = new Date().getFullYear().toString()
-  const currentMonth = new Date().getMonth() + 1
+  const currentMonth = new Date().getMonth()
  
 
-  // Обработчики изменения года и месяца
-  const handleYearChange = (selectedIndex: number) => {
-    setYear((prev) => parseInt(years[selectedIndex]))
-    console.log(year)
-  }
-
-  const handleMonthChange = (selectedIndex: number) => {
-    setMonth((prev) => selectedIndex+1)
-    console.log(month)    
-  }
+  // Обработчики изменения года и месяца  
+  const handleYearChange = useCallback((selectedIndex: number) => {
+    setYear((prev) => parseInt(years[selectedIndex]))    
+  }, [years, setYear]);
+  
+  const handleMonthChange = useCallback((selectedIndex: number) => {
+    setMonth((prev) => selectedIndex+1)       
+  }, [setMonth]);
+  
 
 
   return (
@@ -75,7 +58,7 @@ const DatePicker: React.FC = () => {
 
           <CircularSelector
             onChange={handleMonthChange}
-            selected={currentMonth - 1}
+            selected={currentMonth}
             dataArray={months}
           />
         </div>

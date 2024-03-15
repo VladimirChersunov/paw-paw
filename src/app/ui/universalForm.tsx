@@ -1,55 +1,38 @@
 'use client'
-import Input from './universalInput'
-import { InputProps } from '../lib/definitions'
-import { FormEvent } from 'react'
-import useInput from '../lib/hooks/inputHook'
+import Input from './universalInput';
+import { InputProps } from '../lib/definitions';
+import { FormEvent } from 'react';
+import { useState } from 'react';
 
 const UniversalForm: React.FC<{ inputs: InputProps[] }> = ({ inputs }) => {
 
-  // Создаем массив экземпляров useInput для каждого input
-  const inputFields = inputs.map(input => useInput(input.value || ''))
+
+  const [formState, setFormState] = useState<{ [key: string]: string }>(
+    inputs.reduce((prev, curr) => ({ ...prev, [curr.name]: curr.value || '' }), {})
+  );
+
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
-
-    // Проходимся по всем полям ввода и валидируем их
-    inputFields.forEach(validateInput)
-
-    // Создаем новый FormData объект из текущей формы
-    const formData = new FormData(e.currentTarget as HTMLFormElement)   
-
-    // Используем formData.get('name') для получения значения каждого поля по имени
-    const username = formData.get('username')
-    const password = formData.get('password')
-    const birthDate = formData.get('date')
-    const email = formData.get('email')
-    const rePassword = formData.get('rePassword')
-
-    // Теперь у вас есть доступ к значениям полей
-    console.log('Username:', username+'\n', "Email: ", email+'\n', 'Password: ', password+'\n',  "rePassword: ", rePassword+'\n',   "birthDate: ", birthDate+'\n')
+    console.log(formState);    
   }
 
-  const validateInput = (input: {
-    value: string
-    setError: (value: boolean) => void
-  }) => {
-    if (!input.value.trim()) {
-      input.setError(true)
-    } else {
-      input.setError(false)
-    }
-  }
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormState({
+      ...formState,
+      [e.target.name]: e.target.value,
+    });
+  };  
 
   return (
     <form onSubmit={handleSubmit} className='flex flex-col item-center gap-2'>
       <h1 className='text-center text-xl uppercase pb-3'>Sign Up</h1>
-      {inputFields.map((input, index) => (
+      {inputs.map((input, index) => (
         <Input
           key={index}
-          {...inputs[index]}
-          value={input.value}
-          error={input.error}
-          onChange={input.onChange}
+          {...input}
+          value={formState[input.name]}
+          onChange={handleChange}
         />
       ))}
       <button

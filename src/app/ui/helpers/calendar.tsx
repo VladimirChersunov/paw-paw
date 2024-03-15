@@ -53,7 +53,7 @@ const Calendar: React.FC<CalendarProps> = ({
           <div
             key={day}
             className={`${
-              index == 5 || index == 6 ? 'text-skin-error' : 'text-skin-base'
+              index == 5 || index == 6 ? 'text-skin-error font-medium' : 'text-skin-base'
             }`}
           >
             {day}
