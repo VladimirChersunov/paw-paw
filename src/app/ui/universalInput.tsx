@@ -6,8 +6,8 @@ const Input = (item: InputProps) => {
   
   //console.log(value)
   return (
-    <div>
-      <div className="w-full border-[2px] rounded-[10px] border-skin-base dark:border-skin-base flex flex-row justify-center items-center ">
+    <div className="z-10">
+      <div className="w-full border-[2px] rounded-[10px] border-skin-base  flex flex-row justify-center items-center ">
         <input
           className="block w-full h-[60px] bg-inherit text-[15px] p-[20px] outline-none rounded-[10px] placeholder:text-skin-base "
           type={type}

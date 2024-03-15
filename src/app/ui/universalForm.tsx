@@ -25,7 +25,7 @@ const UniversalForm: React.FC<{ inputs: InputProps[] }> = ({ inputs }) => {
   };  
 
   return (
-    <form onSubmit={handleSubmit} className='flex flex-col item-center gap-2'>
+    <form onSubmit={handleSubmit} className='flex flex-col item-center gap-2 z-0'>
       <h1 className='text-center text-xl uppercase pb-3'>Sign Up</h1>
       {inputs.map((input, index) => (
         <Input

@@ -47,7 +47,7 @@ const Calendar: React.FC<CalendarProps> = ({
   const weekDays = [ 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','Sun']
 
   return (
-    <div className='shadow-lg rounded-lg overflow-hidden min-w-[320px] min-h-[320px]'>
+    <div className='shadow-lg rounded-lg overflow-hidden min-w-[320px] min-h-[320px] '>
       <div className='py-2 px-4 flex justify-between rounded-[12px] border-[2px] border-[#00d8d8] gap-3'>
         {weekDays.map((day, index) => (
           <div

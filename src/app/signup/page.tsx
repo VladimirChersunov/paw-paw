@@ -7,6 +7,7 @@ import Link from 'next/link';
 import IconEye from '../ui/icons/iconsEye';
 import IconEyeOff from '../ui/icons/iconsEyeOff';
 import { useState } from 'react';
+import { DatePickerButton } from '../ui/helpers/datePickerButton';
 
 export default function SignUpPage() {
 
@@ -43,13 +44,14 @@ export default function SignUpPage() {
       disabled: false
     },
     {
-      type: "date",
+      type: "text",
       label: "date",
       value: "",
       name: "date",
-      placeholder: "date",
+      placeholder: "Enter your birthday",
       error: false,
       disabled: false,
+      icon:<DatePickerButton/>
     },
    
     {
@@ -75,7 +77,7 @@ export default function SignUpPage() {
   ];
 
   return (
-    <main className="flex flex-col bg-fill-background-paw-pals items-center justify-center h-screen">
+    <main className="flex flex-col bg-fill-background-paw-pals items-center z-0 justify-center h-screen">
       <AuthLogo />
       <UniversalForm inputs={inputs} />
       <p>Log in with:</p>

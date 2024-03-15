@@ -45,8 +45,7 @@ const DatePicker: React.FC = () => {
 
   return (
     <div
-      className={`absolute z-50 shadow-2xl shadow-yellow-300  p-10
-        rounded-xl  w-max select-none right-0 `}
+      className="absolute shadow-2xl shadow-slate-300  p-10  rounded-xl bg-skin-fill z-50  w-max select-none left-10 top-[-165px] border border-skin-base"
     >
       <div className='flex flex-col items-center'>
         <div className='flex mb-4'>
@@ -62,7 +61,7 @@ const DatePicker: React.FC = () => {
             dataArray={months}
           />
         </div>
-        <div className='calendar-container'>
+        <div className=''>
           <Calendar
             month={month}
             year={year}

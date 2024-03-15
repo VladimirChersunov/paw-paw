@@ -66,7 +66,7 @@ const CircularSelector: React.FC<CircularSelectorProps> = ({
 
   return (
     <div
-      className='flex flex-col justify-center items-center'
+      className='flex flex-col justify-center items-center rounded-3xl'
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
