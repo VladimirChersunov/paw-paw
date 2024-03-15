@@ -29,6 +29,7 @@ const CircularSelector: React.FC<CircularSelectorProps> = ({
     )
   }, [dataArray.length])
 
+
   const handleMouseEnter = () => {
     setIsHovered(true)
   }
@@ -56,8 +57,11 @@ const CircularSelector: React.FC<CircularSelectorProps> = ({
     }
   }, [handleNext, handlePrevious, isHovered])
 
+  /////////////////////////////////////////////////////
   useEffect(() => {
-    onChange(selectedIndex)
+  
+      onChange(selectedIndex)
+    
   }, [selectedIndex])
 
   return (

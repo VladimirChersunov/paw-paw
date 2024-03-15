@@ -1,15 +1,21 @@
 'use client'
-
 import React, { useState } from 'react'
 import Calendar from './calendar'
 import CircularSelector from './circularSelector' // Импортируем компонент CircularSelector
 
 const DatePicker: React.FC = () => {
-  const [year, setYear] = useState<string>('')
-  const [month, setMonth] = useState<string>('')
-  const [selectedDate, setSelectedDate] = useState<string>('')
-  const [selectedIndex, setSelectedIndex] = useState<number>(0)
+  const [year, setYear] = useState<number>(0)
+  const [month, setMonth] = useState<number>(0)
+  const [selectedDate, setSelectedDate] = useState<number>(new Date().getDate())
+ 
 
+  if (typeof window === 'undefined') {
+    // Серверный рендеринг 
+     console.log('Серверный рендеринг');
+  } else {
+    // Клиентский рендеринг 
+     console.log('Клиентский рендеринг');
+  }
 
   //генерация массива годов
   const generateYears = (): string[] => {
@@ -39,19 +45,20 @@ const DatePicker: React.FC = () => {
   ]
 
   const currentYear = new Date().getFullYear().toString()
-  const currentMonth = (new Date().getMonth() + 1)
-  console.log(currentMonth)
-
-  
+  const currentMonth = new Date().getMonth() + 1
+ 
 
   // Обработчики изменения года и месяца
-  const handleYearChange = ( selectedIndex: number) => {
-    
+  const handleYearChange = (selectedIndex: number) => {
+    setYear((prev) => parseInt(years[selectedIndex]))
+    console.log(year)
   }
 
-  const handleMonthChange = ( selectedIndex: number) => {
-  
+  const handleMonthChange = (selectedIndex: number) => {
+    setMonth((prev) => selectedIndex+1)
+    console.log(month)    
   }
+
 
   return (
     <div
@@ -60,22 +67,28 @@ const DatePicker: React.FC = () => {
     >
       <div className='flex flex-col items-center'>
         <div className='flex mb-4'>
-          <CircularSelector onChange={handleYearChange} selected={years.indexOf(currentYear)} dataArray={years} />
+          <CircularSelector
+            onChange={handleYearChange}
+            selected={years.indexOf(currentYear)}
+            dataArray={years}
+          />
 
-          <CircularSelector onChange={handleMonthChange}  selected={currentMonth-1} dataArray={months}/>
+          <CircularSelector
+            onChange={handleMonthChange}
+            selected={currentMonth - 1}
+            dataArray={months}
+          />
         </div>
         <div className='calendar-container'>
-          {/* <Calendar
+          <Calendar
             month={month}
             year={year}
-            selectedDate={selectedDate}
-            selectedIndex={selectedIndex}
+            selectedDate={selectedDate}           
             onDateClick={setSelectedDate}
-          /> */}
+          />
         </div>
       </div>
     </div>
   )
 }
-
 export default DatePicker

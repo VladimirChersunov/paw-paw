@@ -1,8 +1,7 @@
 interface CalendarProps {
-  month: string
-  year: string
-  selectedDate: number | null
-  selectedIndex: number
+  month: number
+  year: number
+  selectedDate: number 
   onDateClick: (date: number) => void
 }
 
@@ -10,10 +9,9 @@ const Calendar: React.FC<CalendarProps> = ({
   month,
   year,
   selectedDate,
-  selectedIndex,
+ 
   onDateClick
 }) => {
-  
   // Функция для получения количества дней в месяце
   const daysInMonth = (month: number, year: number): number => {
     return new Date(year, month, 0).getDate()
@@ -21,13 +19,9 @@ const Calendar: React.FC<CalendarProps> = ({
 
   // Генерация календаря для выбранного месяца и года
   const generateCalendar = (): (number | null)[] => {
+    const totalDays: number = daysInMonth(month, year)
 
-    const totalDays: number = daysInMonth(selectedIndex, parseInt(year))
-
-console.log({selectedIndex})
-console.log("god")
-console.log(year)
-console.log(totalDays)
+    
     const firstDayOfMonth: number = new Date(`${year}-${month}-01`).getDay()
 
     const calendarDays: (number | null)[] = []
@@ -37,7 +31,7 @@ console.log(totalDays)
     }
 
     // Добавляем пустые ячейки для выравнивания дней недели
-    for (let i = 0; i < firstDayOfMonth; i++) {
+    for (let i = 0; i < firstDayOfMonth-1; i++) {
       calendarDays.unshift(null)
     }
 
@@ -50,7 +44,7 @@ console.log(totalDays)
   }
 
   // Список дней недели
-  const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+  const weekDays = [ 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','Sun']
 
   return (
     <div className='shadow-lg rounded-lg overflow-hidden min-w-[320px] min-h-[320px]'>
